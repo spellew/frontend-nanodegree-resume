@@ -13,10 +13,12 @@ const bio = {
   display: function () {
     $("#header").append(HTMLheaderName.replace("%data%", this.name));
     $("#header").append(HTMLheaderRole.replace("%data%", this.role));
-    $("#topContacts").append(HTMLmobile.replace("%data%", this.contacts.mobile));
-    $("#topContacts").append(HTMLemail.replace("%data%", this.contacts.email));
-    $("#topContacts").append(HTMLgithub.replace("%data%", this.contacts.github));
-    $("#topContacts").append(HTMLlocation.replace("%data%", this.contacts.location));
+    [$("#topContacts"), $("#footerContacts")].forEach(el => {
+      el.append(HTMLmobile.replace("%data%", this.contacts.mobile));
+      el.append(HTMLemail.replace("%data%", this.contacts.email));
+      el.append(HTMLgithub.replace("%data%", this.contacts.github));
+      el.append(HTMLlocation.replace("%data%", this.contacts.location));
+    })
     $("#header").append(HTMLbioPic.replace("%data%", this.biopic));
     $("#header").append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage));
     $("#header").append(HTMLskillsStart);
